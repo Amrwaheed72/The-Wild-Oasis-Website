@@ -3,6 +3,6 @@ import Navigation from "./components/Navigation";
 
 export default function Page() {
   return (
-<h1>hello</h1>
+    <h1>hello</h1>
   );
 }
