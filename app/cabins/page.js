@@ -6,7 +6,6 @@ const page = () => {
             <div>
                 cabins page
             </div>
-            <Link href="/about" >navigate to about page</Link>
         </div>
     )
 }
