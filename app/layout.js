@@ -19,6 +19,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <body
@@ -28,7 +29,9 @@ export default function RootLayout({ children }) {
           <Logo />
           <Navigation />
         </header>
-        {children}
+        <main>
+          {children}
+        </main>
       </body>
     </html>
   );
