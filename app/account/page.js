@@ -7,8 +7,8 @@ export const metadata = {
 
 const page = () => {
     return (
-        <div>
-            Account page
+        <div className="text-accent-600 font-bold text-4xl">
+            welcome Amr
         </div>
     )
 }

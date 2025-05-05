@@ -11,7 +11,7 @@ export const metadata = {
 const page = () => {
     return (
         <div className="grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center">
-            <div className="col-span-3">
+            <div className="col-span-5 md:col-span-3">
                 <h1 className="text-4xl mb-10 text-accent-400 font-medium">
                     Welcome to The Wild Oasis
                 </h1>
@@ -38,7 +38,7 @@ const page = () => {
                 </div>
             </div>
 
-            <div className="col-span-2">
+            <div className="col-span-5 md:col-span-2 sm:col-span-2">
                 <Image
                     src={about1}
                     alt="Family sitting around a fire pit in front of cabin"
@@ -46,11 +46,11 @@ const page = () => {
                 />
             </div>
 
-            <div className=" relative aspect-square col-span-2">
+            <div className=" relative aspect-square col-span-5 sm:col-span-3 md:col-span-2">
                 <Image src="/about-2.jpg" fill className="object-cover" alt="Family that manages The Wild Oasis" />
             </div>
 
-            <div className="col-span-3">
+            <div className="col-span-5 md:col-span-3">
                 <h1 className="text-4xl mb-10 text-accent-400 font-medium">
                     Managed by our family since 1962
                 </h1>
