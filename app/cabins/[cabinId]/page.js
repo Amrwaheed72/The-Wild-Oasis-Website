@@ -12,6 +12,14 @@ export const generateMetadata = async ({ params }) => {
     }
 }
 
+export const generateStaticParams = async () => {
+    const cabins = await getCabins()
+    const ids = cabins.map((cabin) => ({
+        cabinId: String(cabin.id)
+    }))
+    return ids
+}
+
 const page = async ({ params }) => {
     const { cabinId } = await params
     const cabin = await getCabin(cabinId)
