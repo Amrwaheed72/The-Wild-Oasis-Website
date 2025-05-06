@@ -1,8 +1,11 @@
+import Spinner from "@/app/_components/Spinner"
+
 const loading = () => {
     return (
-        <p className="text-center text-2xl font-bold text-blue-500">
-            loading
-        </p>
+        <>
+            <Spinner />
+            <button class="text-white px-4 sm:px-8 py-2 sm:py-3 bg-sky-700 hover:bg-sky-800">Submit</button>
+        </>
     )
 }
 

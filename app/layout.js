@@ -1,4 +1,5 @@
 import { Josefin_Sans } from "next/font/google";
+import { Spinnaker } from "next/font/google";
 import "./globals.css";
 
 import Header from "@/app/_components/Header";
@@ -8,7 +9,11 @@ const josefin = Josefin_Sans({
   subsets: ["latin"],
   display: "swap",
 })
-
+const spinnaker = Spinnaker({
+  subsets: ["latin"],
+  display: "swap",
+  weight:['400']
+})
 
 export const metadata = {
   title: {
