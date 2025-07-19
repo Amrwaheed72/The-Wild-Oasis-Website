@@ -16,7 +16,6 @@ export const metadata = {
 const page = async () => {
     const cabins = await getCabins()
     const numCabins = cabins.length
-    console.log(numCabins)
     return (
         <div className="grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center">
             <div className="col-span-5 md:col-span-3">
