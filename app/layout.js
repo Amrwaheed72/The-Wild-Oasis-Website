@@ -3,6 +3,7 @@ import { Spinnaker } from "next/font/google";
 import "./globals.css";
 
 import Header from "@/app/_components/Header";
+import { ReservationsProvider } from "./_components/ReservationsContext";
 
 
 const josefin = Josefin_Sans({
@@ -12,7 +13,7 @@ const josefin = Josefin_Sans({
 const spinnaker = Spinnaker({
   subsets: ["latin"],
   display: "swap",
-  weight:['400']
+  weight: ['400']
 })
 
 export const metadata = {
@@ -33,7 +34,9 @@ export default function RootLayout({ children }) {
         <Header />
         <div className="flex-1  px-8 py-12 grid">
           <main className="max-w-7xl mx-auto w-full">
-            {children}
+            <ReservationsProvider>
+              {children}
+            </ReservationsProvider>
           </main>
         </div>
       </body>
