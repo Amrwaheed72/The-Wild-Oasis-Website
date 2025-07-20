@@ -18,7 +18,6 @@ const navigateLinks = [
 ]
 export default function Navigation() {
     const pathName = usePathname()
-    console.log(pathName)
     return (
         <nav className="z-10 text-xl">
             <div className="hidden md:block">
