@@ -3,6 +3,7 @@ import CabinList from "../_components/CabinList";
 import Spinner from "../_components/Spinner";
 import Filter from "../_components/Filter";
 import ReservationReminder from "../_components/ReservationReminder";
+import PriceFilter from "../_components/PriceFilter";
 
 export const revalidate = 3600;
 
@@ -16,6 +17,7 @@ export const metadata = {
 const page = async ({ searchParams }) => {
     const params = await searchParams
     const filter = params?.capacity ?? 'all'
+    const priceFilter = params?.price ?? 'all'
     return (
         <div>
             <h1 className="text-4xl mb-5 text-accent-400 font-medium">
@@ -29,11 +31,12 @@ const page = async ({ searchParams }) => {
                 away from home. The perfect spot for a peaceful, calm vacation. Welcome
                 to paradise.
             </p>
-            <div className="flex justify-end mb-8">
+            <div className="flex justify-between mb-8">
                 <Filter />
+                <PriceFilter />
             </div>
             <Suspense fallback={<Spinner />} key={filter}>
-                <CabinList filter={filter} />
+                <CabinList filter={filter} priceFilter={priceFilter} />
                 <ReservationReminder />
             </Suspense>
         </div>

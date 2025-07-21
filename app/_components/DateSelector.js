@@ -17,6 +17,7 @@ function isAlreadyBooked(range, datesArr) {
 
 function DateSelector({ settings, bookedDates, cabin }) {
   const { range, setRange, resetRange } = useReservations()
+  console.log(bookedDates)
   // CHANGE
   const regularPrice = 23;
   const discount = 23;

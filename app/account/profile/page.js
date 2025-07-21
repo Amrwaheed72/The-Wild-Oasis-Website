@@ -21,7 +21,6 @@ const page = () => {
                 faster and smoother. See you soon!
             </p>
             <UpdateProfileForm>
-
                 <SelectCountry
                     name="nationality"
                     id="nationality"
