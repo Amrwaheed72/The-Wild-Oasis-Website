@@ -1,14 +1,16 @@
 import NextAuth from "next-auth";
-import Google from 'next-auth/providers/google'
+import GoogleProvider from 'next-auth/providers/google'
 import { createGuest, getGuest } from "./data-service";
+import FacebookProvider from "next-auth/providers/facebook";
 
 
 const authConfig = {
     providers: [
-        Google({
+        GoogleProvider({
             clientId: process.env.AUTH_GOOGLE_ID,
             clientSecret: process.env.AUTH_GOOGLE_SECRET
-        })
+        }),
+        // FacebookProvider({})
     ],
     callbacks: {
         authorized({ auth, request }) {
