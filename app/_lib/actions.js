@@ -41,7 +41,8 @@ export const updateGuest = async (formData) => {
 }
 
 
-export const DeleteReservationAction = async (bookingId) => {
+export const deleteReservationAction = async (bookingId) => {
+    await new Promise((res) => setTimeout(res, 5000))
     const session = await auth()
     if (!session) if (!session) throw new Error('You Must be logged in')
     const guestBookings = await getBookings(session.user.guestId)
