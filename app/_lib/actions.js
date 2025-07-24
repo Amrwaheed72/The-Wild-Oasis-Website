@@ -44,7 +44,7 @@ export const updateGuest = async (formData) => {
 export const deleteReservationAction = async (bookingId) => {
     await new Promise((res) => setTimeout(res, 5000))
     const session = await auth()
-    if (!session) if (!session) throw new Error('You Must be logged in')
+    if (!session) throw new Error('You Must be logged in')
     const guestBookings = await getBookings(session.user.guestId)
     const guestBookingIds = guestBookings.map((booking) => booking.id)
     if (!guestBookingIds.includes(bookingId)) throw new Error('Your are not allowed to delete this booking')
@@ -60,7 +60,7 @@ export const deleteReservationAction = async (bookingId) => {
 
 export const updateReservationAction = async (formData) => {
     const session = await auth()
-    if (!session) if (!session) throw new Error('You Must be logged in')
+    if (!session) throw new Error('You Must be logged in')
     const numGuests = Number(formData.get('numGuests'))
     const observations = formData.get('observations')
     const bookingId = Number(formData.get('bookingId'))
@@ -78,4 +78,24 @@ export const updateReservationAction = async (formData) => {
     revalidatePath(`/account/reservations/edit/${bookingId}`)
     revalidatePath(`/account/reservations`)
     redirect('/account/reservations')
+}
+
+
+export const createReservationAction = async (bookingData, formData) => {
+    const session = await auth()
+    if (!session) throw new Error('You Must be logged in')
+    const numGuests = Number(formData.get('numGuests'))
+    const observations = formData.get('observations').slice(0, 1000)
+    const newBooking = { ...bookingData, guestId: session.user.guestId, numGuests, observations, extrasPrice: 0, totalPrice: bookingData.cabinPrice, isPaid: false, hasBreakfast: false, status: 'unconfirmed' }
+    console.log(newBooking)
+    const { error } = await supabase
+        .from('bookings')
+        .insert([newBooking])
+
+    if (error) {
+        throw new Error('Booking could not be created');
+    }
+    revalidatePath(`/cabins/${bookingData.cabinId}`)
+    revalidatePath(`/account/reservations`)
+    redirect('/cabins/thankyou')
 }
