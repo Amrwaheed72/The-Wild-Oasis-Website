@@ -13,6 +13,7 @@ function ReservationForm({ cabin, user }) {
   const endDate = range.to
   const numNights = differenceInDays(endDate, startDate)
   const cabinPrice = numNights * (regularPrice - discount)
+  console.log(cabin)
 
   const bookingData = {
     startDate, endDate, numNights, cabinPrice, cabinId: id
@@ -37,7 +38,6 @@ function ReservationForm({ cabin, user }) {
       </div>
 
       <form
-        // action={createBookingWithData}
         action={async (FormData) => {
           await createBookingWithData(FormData)
           resetRange()
@@ -72,6 +72,16 @@ function ReservationForm({ cabin, user }) {
             className='px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm'
             placeholder='Any pets, allergies, special requirements, etc.?'
           />
+        </div>
+        <div className="flex flex-col gap-4">
+          <label htmlFor="hasBreakfast">
+            Do you want to have a Breakfast?
+          </label>
+          <select className="border-1 border-primary-500 p-1 bg-primary-200 text-primary-800" name="hasBreakfast" id="hasBreakfast" required >
+            <option value="" key="" disabled>select</option>
+            <option value="TRUE">Yes</option>
+            <option value="FALSE">No</option>
+          </select>
         </div>
 
         <div className='flex justify-end items-center gap-6'>

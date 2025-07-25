@@ -86,7 +86,8 @@ export const createReservationAction = async (bookingData, formData) => {
     if (!session) throw new Error('You Must be logged in')
     const numGuests = Number(formData.get('numGuests'))
     const observations = formData.get('observations').slice(0, 1000)
-    const newBooking = { ...bookingData, guestId: session.user.guestId, numGuests, observations, extrasPrice: 0, totalPrice: bookingData.cabinPrice, isPaid: false, hasBreakfast: false, status: 'unconfirmed' }
+    const hasBreakfast = formData.get('hasBreakfast')
+    const newBooking = { ...bookingData, guestId: session.user.guestId, numGuests, observations, extrasPrice: 0, totalPrice: bookingData.cabinPrice, isPaid: false, hasBreakfast, status: 'unconfirmed' }
     console.log(newBooking)
     const { error } = await supabase
         .from('bookings')
