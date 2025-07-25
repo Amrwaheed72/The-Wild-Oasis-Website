@@ -87,7 +87,8 @@ export const createReservationAction = async (bookingData, formData) => {
     const numGuests = Number(formData.get('numGuests'))
     const observations = formData.get('observations').slice(0, 1000)
     const hasBreakfast = formData.get('hasBreakfast')
-    const newBooking = { ...bookingData, guestId: session.user.guestId, numGuests, observations, extrasPrice: 0, totalPrice: bookingData.cabinPrice, isPaid: false, hasBreakfast, status: 'unconfirmed' }
+    const isPaid = formData.get('isPaid')
+    const newBooking = { ...bookingData, guestId: session.user.guestId, numGuests, observations, extrasPrice: 0, totalPrice: bookingData.cabinPrice, isPaid, hasBreakfast, status: 'unconfirmed' }
     console.log(newBooking)
     const { error } = await supabase
         .from('bookings')

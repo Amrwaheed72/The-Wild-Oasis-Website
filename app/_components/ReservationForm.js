@@ -4,8 +4,11 @@ import { differenceInDays } from "date-fns";
 import { useReservations } from "./ReservationsContext";
 import { createReservationAction } from "../_lib/actions";
 import { Button } from "./UpdateProfileForm";
+import { useState } from "react";
 
 function ReservationForm({ cabin, user }) {
+  const [isPaid, setIsPaid] = useState(false);
+  console.log(isPaid)
   // CHANGE
   const { range, resetRange } = useReservations()
   const { maxCapacity, regularPrice, discount, id } = cabin;
@@ -13,7 +16,6 @@ function ReservationForm({ cabin, user }) {
   const endDate = range.to
   const numNights = differenceInDays(endDate, startDate)
   const cabinPrice = numNights * (regularPrice - discount)
-  console.log(cabin)
 
   const bookingData = {
     startDate, endDate, numNights, cabinPrice, cabinId: id
@@ -82,6 +84,12 @@ function ReservationForm({ cabin, user }) {
             <option value="TRUE">Yes</option>
             <option value="FALSE">No</option>
           </select>
+        </div>
+        <div className="flex gap-2">
+          <input type="checkbox" checked={isPaid} onChange={(e) => setIsPaid(e.target.checked)} name="isPaid" id="isPaid" />
+          <label htmlFor="isPaid">
+            mark this checkbox if you want to pay in arrival
+          </label>
         </div>
 
         <div className='flex justify-end items-center gap-6'>
