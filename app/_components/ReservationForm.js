@@ -8,7 +8,6 @@ import { useState } from "react";
 
 function ReservationForm({ cabin, user }) {
   const [isPaid, setIsPaid] = useState(false);
-  console.log(isPaid)
   // CHANGE
   const { range, resetRange } = useReservations()
   const { maxCapacity, regularPrice, discount, id } = cabin;
@@ -86,8 +85,15 @@ function ReservationForm({ cabin, user }) {
           </select>
         </div>
         <div className="flex gap-2">
-          <input type="checkbox" checked={isPaid} onChange={(e) => setIsPaid(e.target.checked)} name="isPaid" id="isPaid" />
-          <label htmlFor="isPaid">
+          <input type="hidden" name="isPaid" value="false" />
+          <input
+            type="checkbox"
+            name="isPaid"
+            id="isPaid"
+            value="true"
+            checked={isPaid}
+            onChange={(e) => setIsPaid(e.target.checked)}
+          />          <label htmlFor="isPaid">
             mark this checkbox if you want to pay in arrival
           </label>
         </div>
